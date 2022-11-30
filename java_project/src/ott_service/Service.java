@@ -13,40 +13,20 @@ import com.sun.tools.javac.Main;
 
 import java.util.*;
 
-
-
-class MovieInfo{
-	String title = null;
-	String movie_director = null;
-	String release_day = null; 
-	String genre = null;
-	int is_liked = 0;
-	
-	public MovieInfo(String t,String d,String r,String g) { // init movie_info
-		this.title = t;
-		this.movie_director = d;
-		this.release_day = r;
-		this.genre = g;
-	}
-}
-
-
 public class Service extends JFrame{
 	private JPanel mainPanel = new JPanel(new GridLayout(4,2));
 	private JButton popular_btn = new JButton("TOP 5");
 	private JButton recommend_btn = new JButton("Genre Recommend");
 	private JButton search_btn = new JButton("Movie Search");
-	private JButton list_btn = new JButton("전체 출력");
-	private ImageIcon icon = new ImageIcon("../img/movie.png");
+	private JButton list_btn = new JButton("전체 출력"); 
 	
-	public void paint(Graphics g) {
-		
-	}
+	private ImageIcon icon = new ImageIcon("../img/movie.png"); // 잠깐 보류
+	
 	
 	public Service() {
 		super("OTT Recommendation Service");
 		this.setContentPane(mainPanel);
-		mainPanel.add();
+		
 		mainPanel.add(popular_btn);
 		mainPanel.add(recommend_btn);
 		mainPanel.add(search_btn);
@@ -63,13 +43,14 @@ public class Service extends JFrame{
 	public static void main(String[] args) throws IOException { // main method
 		ArrayList<MovieInfo> movieList = new ArrayList<MovieInfo>();
 		try {
-			File file = new File ("/Users/yeonjun/Desktop/movie_list.txt");
+			File file = new File ("C:/Users/jhje5/Desktop/java_project/movie_list.txt");   //  /Users/yeonjun/Desktop/movie_list.txt-> mac , C:/Users/jhje5/Desktop/java_project/movie_list.txt -> window
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufReader = new BufferedReader(fileReader);
 		
 			String line = "";
 			while ((line = bufReader.readLine()) != null) {
 				String tmp[] = line.split("-");
+
 				movieList.add(new MovieInfo(tmp[0],tmp[1],tmp[2],tmp[3]));
 			}
 			
