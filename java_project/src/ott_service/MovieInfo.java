@@ -13,4 +13,8 @@ public class MovieInfo{
 		this.release_day = r;
 		this.genre = g;
 	}
+	
+	public String getData() {
+		return this.title+" "+this.movie_director+" "+this.release_day+" "+this.genre;
+	}
 }
